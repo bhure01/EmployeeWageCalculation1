@@ -5,15 +5,17 @@ public class EmployeeWageCalculation {
     public static final int IS_PART_TIME = 2;
     public static final int EMP_RATE_PER_HR = 20;
     public static final int NUM_OF_MAX_WORK_DAYS =20;
+    public static final int NUM_OF_MAX_WORK_HRS = 100;
 
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Calculation Problem");
-        int empHrs = 0;
-        int empWage = 0;
-        int totalEmpWage =0;
-        int empCheck =(int) Math.floor(Math.random() * 10) % 3; //computing employee check-type casted
+        int empHrs = 0, totalEmpHrs = 0;
+        int empWage = 0, totalEmpWage = 0;
+        int totalWorkingDays = 0;
 
-        for (int day = 0; day <= NUM_OF_MAX_WORK_DAYS; day++) {
+        while(totalEmpHrs <= NUM_OF_MAX_WORK_HRS && totalWorkingDays <= NUM_OF_MAX_WORK_DAYS) {
+            totalWorkingDays++;
+            int empCheck =(int) Math.floor(Math.random() * 10) % 3;
 
             switch (empCheck) {
                 case IS_FULL_TIME:
@@ -28,9 +30,11 @@ public class EmployeeWageCalculation {
                     empHrs = 0;
                     System.out.println("Employee is Absent");
             }
+            totalEmpHrs = totalEmpHrs + empHrs;
             empWage = empHrs * EMP_RATE_PER_HR;
-            totalEmpWage = totalEmpWage + empWage;                      //totalEmpWage += empWage;
+            totalEmpWage = totalEmpWage + empWage;
             System.out.println("Employee wage is: " + empWage);
+            System.out.println("Days:"+totalWorkingDays+"\t Total Hours:"+totalEmpHrs);
         }
         System.out.println("Total Employee wage for month is: " +totalEmpWage);
     }
