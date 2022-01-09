@@ -10,10 +10,10 @@ public class EmployeeWageCalculation {
 
         //Variables
         int empHrs = 0;
-        int totalEmpHrs = 0;
+        static int totalEmpHrs = 0;
         int empWage = 0;
         int totalEmpWage = 0;
-        int totalWorkingDays = 0;
+        static int totalWorkingDays = 0;
 
         private void checkEmpType() {           // method to check employee type
             double empCheck =Math.floor(Math.random() * 10) % 3;
@@ -41,7 +41,7 @@ public class EmployeeWageCalculation {
             System.out.println("Days:"+totalWorkingDays+"\t Total Hours:"+totalEmpHrs);
         }
 
-       public void main(String[] args) {
+       public static void main(String[] args) {
 
        EmployeeWageCalculation eW = new EmployeeWageCalculation();
 
